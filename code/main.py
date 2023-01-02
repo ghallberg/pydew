@@ -1,8 +1,9 @@
-import pygame
 import sys
 
+import pygame
+
 from level import Level
-from settings import *
+from settings import SCREEN_WIDTH, SCREEN_HEIGHT
 
 
 class Game:

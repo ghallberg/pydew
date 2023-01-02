@@ -4,9 +4,6 @@ from player import Player
 
 
 class Level:
-    display_surface: pygame.Surface
-    player: Player
-    all_sprites: pygame.sprite.Group
 
     def __init__(self):
         # Fetch display surface
@@ -15,6 +12,7 @@ class Level:
         # Sprite groups
         self.all_sprites = pygame.sprite.Group()
 
+        self.player = None
         self.setup()
 
     def setup(self):
