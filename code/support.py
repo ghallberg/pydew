@@ -13,3 +13,7 @@ def import_images_from_folder(path: str) -> list[pygame.Surface]:
             surface_list.append(image)
 
     return surface_list
+
+
+def increment_and_modulo(x: int, mod: int) -> int:
+    return (x + 1) % mod
