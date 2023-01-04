@@ -34,26 +34,42 @@ class Player(pygame.sprite.Sprite):
             animations[animation] = import_images_from_folder(full_path)
         return animations
 
+    def animate(self, dt: float) -> None:
+        self.frame_index += 4 * dt
+        if self.frame_index >= len(self.animations[self.status]):
+            self.frame_index = 0
+
+        self.image = self.animations[self.status][int(self.frame_index)]
+
     def input(self) -> None:
         keys = pygame.key.get_pressed()
 
         # Vertical movement
         if keys[pygame.K_UP]:
             self.direction.y = -1
+            self.status = 'up'
         elif keys[pygame.K_DOWN]:
             self.direction.y = 1
+            self.status = 'down'
         else:
             self.direction.y = 0
 
         # Horizontal movement
         if keys[pygame.K_LEFT]:
             self.direction.x = -1
+            self.status = 'left'
         elif keys[pygame.K_RIGHT]:
             self.direction.x = 1
+            self.status = 'right'
         else:
             self.direction.x = 0
 
-    def move(self, dt) -> None:
+    def get_status(self) -> str:
+        # Set idle status if player isn't moving
+        if self.direction.magnitude() == 0 and not self.status.endswith('_idle'):
+            self.status += '_idle'
+
+    def move(self, dt: float) -> None:
         # Normalize the vector
         if self.direction.magnitude() > 0:
             self.direction = self.direction.normalize()
@@ -65,6 +81,8 @@ class Player(pygame.sprite.Sprite):
         self.pos.y += self.direction.y * self.speed * dt
         self.rect.centery = self.pos.y
 
-    def update(self, dt) -> None:
+    def update(self, dt: float) -> None:
         self.input()
+        self.get_status()
         self.move(dt)
+        self.animate(dt)
