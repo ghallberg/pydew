@@ -44,7 +44,7 @@ class Player(pygame.sprite.Sprite):
         pass
 
     def use_seed(self) -> None:
-        print(self.selected_seed)
+        pass
 
     @staticmethod
     def import_assets() -> dict[str: list[pygame.Surface]]:
