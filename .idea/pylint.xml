@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="PylintConfigService">
-    <option name="pylintArguments" value="--extension-pkg-whitelist=pygame --disable=C0114 --disable=C0115 --disable=C0116" />
+    <option name="pylintArguments" value="--extension-pkg-whitelist=pygame --disable=C0114 --disable=C0115 --disable=C0116 --good-names=dt,x" />
     <option name="scanBeforeCheckin" value="false" />
   </component>
 </project>
