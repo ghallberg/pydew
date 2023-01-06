@@ -1,11 +1,12 @@
 import pygame
 
+from settings import LAYERS
 from support import import_images_from_folder, increment_and_modulo
 from timer import Timer
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos, group):
+    def __init__(self, pos: tuple[int, int], group):
         super().__init__(group)
 
         # Animation setup
@@ -16,6 +17,7 @@ class Player(pygame.sprite.Sprite):
         # General setup
         self.image = self.animations[self.status][self.frame_index]
         self.rect = self.image.get_rect(center=pos)
+        self.z = LAYERS['main']
 
         # Movement attributes
         self.direction = pygame.math.Vector2(0, 0)
