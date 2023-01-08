@@ -37,7 +37,7 @@ class Player(pygame.sprite.Sprite):
         }
 
         # Tools
-        self.tools = ['hoe', 'axe', 'water']
+        self.tools = ['axe', 'hoe', 'water']
         self.tool_index = 0
         self.selected_tool = self.tools[self.tool_index]
         self.target_pos = self.rect.center + PLAYER_TOOL_OFFSET[self.status.split('_')[0]]
@@ -54,7 +54,6 @@ class Player(pygame.sprite.Sprite):
         if self.selected_tool == 'hoe':
             pass
         if self.selected_tool == 'axe':
-            print('use axe')
             for tree in self.tree_sprites.sprites():
                 if tree.rect.collidepoint(self.target_pos):
                     tree.damage()
