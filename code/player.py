@@ -1,12 +1,12 @@
 import pygame
 
-from settings import LAYERS
+from settings import LAYERS, PLAYER_TOOL_OFFSET
 from support import import_images_from_folder, increment_and_modulo
 from timer import Timer
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos: tuple[int, int], group: pygame.sprite.Group, collision_sprites: pygame.sprite.Group):
+    def __init__(self, pos: tuple[int, int], group: pygame.sprite.Group, collision_sprites: pygame.sprite.Group, tree_sprites: pygame.sprite.Group):
         super().__init__(group)
 
         # Animation setup
@@ -40,14 +40,29 @@ class Player(pygame.sprite.Sprite):
         self.tools = ['hoe', 'axe', 'water']
         self.tool_index = 0
         self.selected_tool = self.tools[self.tool_index]
+        self.target_pos = self.rect.center + PLAYER_TOOL_OFFSET[self.status.split('_')[0]]
 
         # Seeds
         self.seeds = ['corn', 'tomato']
         self.seed_index = 0
         self.selected_seed = self.seeds[self.seed_index]
 
+        # Interactables
+        self.tree_sprites = tree_sprites
+
     def use_tool(self) -> None:
-        pass
+        if self.selected_tool == 'hoe':
+            pass
+        if self.selected_tool == 'axe':
+            print('use axe')
+            for tree in self.tree_sprites.sprites():
+                if tree.rect.collidepoint(self.target_pos):
+                    tree.damage()
+        if self.selected_tool == 'water':
+            pass
+
+    def set_target_pos(self) -> None:
+        self.target_pos = self.rect.center + PLAYER_TOOL_OFFSET[self.status.split('_')[0]]
 
     def use_seed(self) -> None:
         pass
@@ -132,7 +147,7 @@ class Player(pygame.sprite.Sprite):
         for timer in self.timers.values():
             timer.update()
 
-    def collision(self, direction):
+    def collision(self, direction: str) -> None:
         for sprite in self.collision_sprites.sprites():
             if hasattr(sprite, 'hitbox'):
                 if sprite.hitbox.colliderect(self.hitbox):
@@ -171,6 +186,9 @@ class Player(pygame.sprite.Sprite):
     def update(self, dt: float) -> None:
         self.input()
         self.set_status()
+        self.update_timers()
+        self.set_target_pos()
+
         self.move(dt)
         self.animate(dt)
-        self.update_timers()
+
