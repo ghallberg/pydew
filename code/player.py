@@ -1,13 +1,14 @@
 import pygame
 
 from settings import LAYERS, PLAYER_TOOL_OFFSET
+from soil import SoilLayer
 from support import import_images_from_folder, increment_and_modulo
 from timer import Timer
 
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos: tuple[int, int], group: pygame.sprite.Group, collision_sprites: pygame.sprite.Group,
-                 tree_sprites: pygame.sprite.Group, interactable_sprites: pygame.sprite.Group):
+                 tree_sprites: pygame.sprite.Group, interactable_sprites: pygame.sprite.Group, soil_layer: SoilLayer):
         super().__init__(group)
 
         # Animation setup
@@ -38,7 +39,7 @@ class Player(pygame.sprite.Sprite):
         }
 
         # Tools
-        self.tools = ['axe', 'hoe', 'water']
+        self.tools = ['hoe', 'axe', 'water']
         self.tool_index = 0
         self.selected_tool = self.tools[self.tool_index]
         self.target_pos = self.rect.center + PLAYER_TOOL_OFFSET[self.status.split('_')[0]]
@@ -60,10 +61,11 @@ class Player(pygame.sprite.Sprite):
         self.tree_sprites = tree_sprites
         self.interactable_sprites = interactable_sprites
         self.sleep = False
+        self.soil_layer = soil_layer
 
     def use_tool(self) -> None:
         if self.selected_tool == 'hoe':
-            pass
+            self.soil_layer.get_hit(self.target_pos)
         if self.selected_tool == 'axe':
             for tree in self.tree_sprites.sprites():
                 if tree.rect.collidepoint(self.target_pos):

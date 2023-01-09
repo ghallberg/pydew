@@ -4,6 +4,7 @@ import pytmx
 from overlay import Overlay
 from player import Player
 from settings import LAYERS, SCREEN_HEIGHT, SCREEN_WIDTH, TILE_SIZE, PLAYER_TOOL_OFFSET, DEBUG
+from soil import SoilLayer
 from sprites import GenericSprite, Water, WildFlower, Tree, Interactable
 from support import import_images_from_folder
 from transition import Transition
@@ -20,7 +21,7 @@ class Level:
         self.tree_sprites = pygame.sprite.Group()
         self.interactable_sprites = pygame.sprite.Group()
 
-        self.player = None
+        self.soil_layer = SoilLayer(self.all_sprites)
         self.setup()
         self.overlay = Overlay(self.player)
         self.transition = Transition(self.reset, self.player)
@@ -69,7 +70,8 @@ class Level:
                                      group=self.all_sprites,
                                      collision_sprites=self.collision_sprites,
                                      tree_sprites=self.tree_sprites,
-                                     interactable_sprites=self.interactable_sprites)
+                                     interactable_sprites=self.interactable_sprites,
+                                     soil_layer=self.soil_layer)
             if obj.name == 'Bed':
                 Interactable(pos=(obj.x, obj.y), size=(obj.width, obj.height), groups=self.interactable_sprites, name=obj.name)
 

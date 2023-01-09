@@ -50,4 +50,4 @@ PURCHASE_PRICES = {
 	'tomato': 5
 }
 
-DEBUG = True
+DEBUG = False
