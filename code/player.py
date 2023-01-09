@@ -6,7 +6,8 @@ from timer import Timer
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos: tuple[int, int], group: pygame.sprite.Group, collision_sprites: pygame.sprite.Group, tree_sprites: pygame.sprite.Group):
+    def __init__(self, pos: tuple[int, int], group: pygame.sprite.Group, collision_sprites: pygame.sprite.Group,
+                 tree_sprites: pygame.sprite.Group, interactable_sprites: pygame.sprite.Group):
         super().__init__(group)
 
         # Animation setup
@@ -57,6 +58,8 @@ class Player(pygame.sprite.Sprite):
 
         # Interactables
         self.tree_sprites = tree_sprites
+        self.interactable_sprites = interactable_sprites
+        self.sleep = False
 
     def use_tool(self) -> None:
         if self.selected_tool == 'hoe':
@@ -97,7 +100,7 @@ class Player(pygame.sprite.Sprite):
     def input(self) -> None:
         keys = pygame.key.get_pressed()
 
-        if not self.timers['tool use'].active:
+        if not self.timers['tool use'].active and not self.sleep:
             # Vertical movement
             if keys[pygame.K_UP]:
                 self.direction.y = -1
@@ -141,6 +144,14 @@ class Player(pygame.sprite.Sprite):
                 self.timers['seed switch'].activate()
                 self.seed_index = increment_and_modulo(self.seed_index, len(self.seeds))
                 self.selected_seed = self.seeds[self.seed_index]
+
+        if keys[pygame.K_RETURN]:
+            collided_interaction_sprite = pygame.sprite.spritecollide(sprite=self, group=self.interactable_sprites, dokill=False)
+            if collided_interaction_sprite and collided_interaction_sprite[0].name == 'Trader':
+                pass
+            if collided_interaction_sprite and collided_interaction_sprite[0].name == 'Bed':
+                self.status = 'left_idle'
+                self.sleep = True
 
     def set_status(self) -> None:
         # Set idle status if player isn't moving

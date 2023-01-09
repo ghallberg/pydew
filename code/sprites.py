@@ -17,6 +17,14 @@ class GenericSprite(pygame.sprite.Sprite):
         self.hitbox = self.rect.copy().inflate(-self.rect.width * 0.2, -self.rect.height * 0.75)
 
 
+class Interactable(GenericSprite):
+    def __init__(self, pos: Union[pygame.math.Vector2, tuple[int, int]], size: Union[pygame.math.Vector2, tuple[int, int]],
+                 groups: Union[pygame.sprite.Group, list[pygame.sprite.Group]], name: str):
+        surf = pygame.Surface(size)
+        super().__init__(pos, surf, groups, LAYERS['main'])
+        self.name = name
+
+
 class Water(GenericSprite):
     def __init__(self, pos: Union[pygame.math.Vector2, tuple[int, int]],
                  frames: list[pygame.Surface], groups: Union[pygame.sprite.Group, list[pygame.sprite.Group]]):
@@ -121,5 +129,3 @@ class Tree(GenericSprite):
     def update(self, dt: float) -> None:
         if self.alive:
             self.check_death()
-
-
