@@ -1,9 +1,12 @@
+from random import randint
+
 import pygame
 import pytmx
 
 from overlay import Overlay
 from player import Player
 from settings import LAYERS, SCREEN_HEIGHT, SCREEN_WIDTH, TILE_SIZE, PLAYER_TOOL_OFFSET, DEBUG
+from sky import Rain
 from soil import SoilLayer
 from sprites import GenericSprite, Water, WildFlower, Tree, Interactable
 from support import import_images_from_folder
@@ -25,6 +28,11 @@ class Level:
         self.setup()
         self.overlay = Overlay(self.player)
         self.transition = Transition(self.reset, self.player)
+
+        # Sky
+        self.rain = Rain(self.all_sprites)
+        self.raining = randint(0, 10) > 7
+        self.soil_layer.raining = self.raining
 
     def setup(self) -> None:
         tmx_data = pytmx.util_pygame.load_pygame('../data/map.tmx')
@@ -96,12 +104,19 @@ class Level:
 
         # Water on soil
         self.soil_layer.remove_water()
+        self.raining = randint(0, 10) > 7
+        self.soil_layer.raining = self.raining
+        if self.raining:
+            self.soil_layer.water_all()
 
     def run(self, dt) -> None:
         self.display_surface.fill('black')
         self.all_sprites.update(dt)
         self.all_sprites.custom_draw(self.player)
         self.overlay.display()
+
+        if self.raining:
+            self.rain.update()
 
         if self.player.sleep:
             self.transition.play()

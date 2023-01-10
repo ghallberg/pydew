@@ -73,6 +73,9 @@ class SoilLayer:
                 if 'F' in self.grid[y][x]:
                     self.grid[y][x].append('X')
                     self.create_soil_tiles()
+                    if self.raining:
+                        # TODO Why water everything?
+                        self.water_all()
 
     def water(self, target_pos: pygame.math.Vector2) -> None:
         for soil_sprite in self.soil_sprites.sprites():
@@ -82,6 +85,15 @@ class SoilLayer:
                 self.grid[y][x].append('W')
 
                 WaterTile(pos=soil_sprite.rect.topleft, surf=random.choice(self.water_surfs), groups=[self.all_sprites, self.water_sprites])
+
+    def water_all(self):
+        for row_index, row in enumerate(self.grid):
+            for col_index, cell in enumerate(row):
+                if 'X' in cell and 'W' not in cell:
+                    cell.append('W')
+                    x = col_index * TILE_SIZE
+                    y = row_index * TILE_SIZE
+                    WaterTile(pos=(x, y), surf=random.choice(self.water_surfs), groups=[self.all_sprites, self.water_sprites])
 
     def remove_water(self) -> None:
         for sprite in self.water_sprites.sprites():
