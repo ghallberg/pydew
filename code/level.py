@@ -24,7 +24,7 @@ class Level:
         self.tree_sprites = pygame.sprite.Group()
         self.interactable_sprites = pygame.sprite.Group()
 
-        self.soil_layer = SoilLayer(self.all_sprites)
+        self.soil_layer = SoilLayer(self.all_sprites, self.collision_sprites)
         self.setup()
         self.overlay = Overlay(self.player)
         self.transition = Transition(self.reset, self.player)
@@ -76,10 +76,10 @@ class Level:
             if obj.name == 'Start':
                 self.player = Player(pos=(obj.x, obj.y),
                                      group=self.all_sprites,
-                                     collision_sprites=self.collision_sprites,
                                      tree_sprites=self.tree_sprites,
                                      interactable_sprites=self.interactable_sprites,
-                                     soil_layer=self.soil_layer)
+                                     soil_layer=self.soil_layer,
+                                     collision_sprites=self.collision_sprites)
             if obj.name == 'Bed':
                 Interactable(pos=(obj.x, obj.y), size=(obj.width, obj.height), groups=self.interactable_sprites, name=obj.name)
 
@@ -95,6 +95,9 @@ class Level:
             print(self.player.item_inventory)
 
     def reset(self):
+        # Plants
+        self.soil_layer.update_plants()
+
         # Trees in apples
         for tree in self.tree_sprites.sprites():
             if tree.alive:

@@ -73,11 +73,11 @@ class Player(pygame.sprite.Sprite):
         if self.selected_tool == 'water':
             self.soil_layer.water(self.target_pos)
 
+    def use_seed(self) -> None:
+        self.soil_layer.plant_seed(self.target_pos, self.selected_seed)
+
     def set_target_pos(self) -> None:
         self.target_pos = self.rect.center + PLAYER_TOOL_OFFSET[self.status.split('_')[0]]
-
-    def use_seed(self) -> None:
-        pass
 
     @staticmethod
     def import_assets() -> dict[str: list[pygame.Surface]]:
