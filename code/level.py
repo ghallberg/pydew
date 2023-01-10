@@ -6,9 +6,9 @@ import pytmx
 from overlay import Overlay
 from player import Player
 from settings import LAYERS, SCREEN_HEIGHT, SCREEN_WIDTH, TILE_SIZE, PLAYER_TOOL_OFFSET, DEBUG
-from sky import Rain
+from sky import Rain, Sky
 from soil import SoilLayer
-from sprites import GenericSprite, Water, WildFlower, Tree, Interactable
+from sprites import GenericSprite, Water, WildFlower, Tree, Interactable, Particle
 from support import import_images_from_folder
 from transition import Transition
 
@@ -33,6 +33,7 @@ class Level:
         self.rain = Rain(self.all_sprites)
         self.raining = randint(0, 10) > 7
         self.soil_layer.raining = self.raining
+        self.sky = Sky()
 
     def setup(self) -> None:
         tmx_data = pytmx.util_pygame.load_pygame('../data/map.tmx')
@@ -112,14 +113,31 @@ class Level:
         if self.raining:
             self.soil_layer.water_all()
 
+        # Sky
+        self.sky.reset_start_color()
+
+    def plant_collision(self):
+        if self.soil_layer.plant_sprites.sprites():
+            for plant in self.soil_layer.plant_sprites.sprites():
+                if plant.harvestable and plant.rect.colliderect(self.player.hitbox):
+                    self.player_add(plant.plant_type)
+                    plant.kill()
+                    Particle(pos=plant.rect.topleft, surf=plant.image, groups=self.all_sprites, z=LAYERS['main'])
+                    row = plant.rect.centery // TILE_SIZE
+                    col = plant.rect.centerx // TILE_SIZE
+                    self.soil_layer.grid[row][col].remove('P')
+
     def run(self, dt) -> None:
         self.display_surface.fill('black')
         self.all_sprites.update(dt)
+        self.plant_collision()
         self.all_sprites.custom_draw(self.player)
         self.overlay.display()
 
         if self.raining:
             self.rain.update()
+
+        self.sky.display(dt)
 
         if self.player.sleep:
             self.transition.play()
