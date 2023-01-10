@@ -1,3 +1,4 @@
+import random
 from typing import Union
 
 import pygame
@@ -5,7 +6,7 @@ from pytmx.util_pygame import load_pygame
 
 from settings import LAYERS
 from settings import TILE_SIZE, DEBUG
-from support import import_folder_dict
+from support import import_folder_dict, import_images_from_folder
 
 
 class SoilTile(pygame.sprite.Sprite):
@@ -16,15 +17,24 @@ class SoilTile(pygame.sprite.Sprite):
         self.z = LAYERS['soil']
 
 
+class WaterTile(pygame.sprite.Sprite):
+    def __init__(self, pos: tuple[int, int], surf: pygame.Surface, groups: Union[pygame.sprite.Group, list[pygame.sprite.Group]]):
+        super().__init__(groups)
+        self.image = surf
+        self.rect = self.image.get_rect(topleft=pos)
+        self.z = LAYERS['soil water']
+
+
 class SoilLayer:
     def __init__(self, all_sprites: pygame.sprite.Group):
         # Sprite Groups
         self.all_sprites = all_sprites
         self.soil_sprites = pygame.sprite.Group()
+        self.water_sprites = pygame.sprite.Group()
 
         # Graphics
-        self.soil_surf = pygame.image.load('../graphics/soil/o.png')
         self.soil_surfs = import_folder_dict('../graphics/soil')
+        self.water_surfs = import_images_from_folder('../graphics/soil_water')
 
         self.grid = self.create_soil_grid()
         self.hit_rects = self.create_hit_rects()
@@ -44,7 +54,7 @@ class SoilLayer:
             grid[y][x].append('F')
         return grid
 
-    def create_hit_rects(self):
+    def create_hit_rects(self) -> list[pygame.Rect]:
         hit_rects = []
         for row_index, row in enumerate(self.grid):
             for col_index, cell in enumerate(row):
@@ -55,14 +65,32 @@ class SoilLayer:
                     hit_rects.append(rect)
         return hit_rects
 
-    def get_hit(self, point):
+    def get_hit(self, target_pos: pygame.math.Vector2) -> None:
         for rect in self.hit_rects:
-            if rect.collidepoint(point):
+            if rect.collidepoint(target_pos):
                 x = rect.x // TILE_SIZE
                 y = rect.y // TILE_SIZE
                 if 'F' in self.grid[y][x]:
                     self.grid[y][x].append('X')
                     self.create_soil_tiles()
+
+    def water(self, target_pos: pygame.math.Vector2) -> None:
+        for soil_sprite in self.soil_sprites.sprites():
+            if soil_sprite.rect.collidepoint(target_pos):
+                x = soil_sprite.rect.x // TILE_SIZE
+                y = soil_sprite.rect.y // TILE_SIZE
+                self.grid[y][x].append('W')
+
+                WaterTile(pos=soil_sprite.rect.topleft, surf=random.choice(self.water_surfs), groups=[self.all_sprites, self.water_sprites])
+
+    def remove_water(self) -> None:
+        for sprite in self.water_sprites.sprites():
+            sprite.kill()
+
+        for row in self.grid:
+            for cell in row:
+                if 'W' in cell:
+                    cell.remove('W')
 
     def create_soil_tiles(self):
         self.soil_sprites.empty()

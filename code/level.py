@@ -87,11 +87,15 @@ class Level:
             print(self.player.item_inventory)
 
     def reset(self):
+        # Trees in apples
         for tree in self.tree_sprites.sprites():
             if tree.alive:
                 for apple in tree.apple_sprites.sprites():
                     apple.kill()
                 tree.create_fruit()
+
+        # Water on soil
+        self.soil_layer.remove_water()
 
     def run(self, dt) -> None:
         self.display_surface.fill('black')
