@@ -11,6 +11,7 @@ from soil import SoilLayer
 from sprites import GenericSprite, Water, WildFlower, Tree, Interactable, Particle
 from support import import_images_from_folder
 from transition import Transition
+from menu import Menu
 
 
 class Level:
@@ -34,6 +35,17 @@ class Level:
         self.raining = randint(0, 10) > 7
         self.soil_layer.raining = self.raining
         self.sky = Sky()
+
+        # Shop
+        self.shop_active = False
+        self.menu = Menu(self.player, self.toggle_shop)
+
+        self.success = pygame.mixer.Sound('../audio/success.wav')
+        self.success.set_volume(0.05)
+
+        self.bg_music = pygame.mixer.Sound('../audio/music.mp3')
+        self.bg_music.set_volume(0.01)
+        self.bg_music.play(loops=-1)
 
     def setup(self) -> None:
         tmx_data = pytmx.util_pygame.load_pygame('../data/map.tmx')
@@ -72,7 +84,7 @@ class Level:
             GenericSprite(pos=(x * TILE_SIZE, y * TILE_SIZE),
                           surf=pygame.Surface((TILE_SIZE, TILE_SIZE)), groups=self.collision_sprites, z=LAYERS['main'])
 
-        # Player
+        # Player / Interactables
         for obj in tmx_data.get_layer_by_name('Player'):
             if obj.name == 'Start':
                 self.player = Player(pos=(obj.x, obj.y),
@@ -80,8 +92,11 @@ class Level:
                                      tree_sprites=self.tree_sprites,
                                      interactable_sprites=self.interactable_sprites,
                                      soil_layer=self.soil_layer,
-                                     collision_sprites=self.collision_sprites)
-            if obj.name == 'Bed':
+                                     collision_sprites=self.collision_sprites,
+                                     toggle_shop = self.toggle_shop)
+            if obj.name == 'Bed' or obj.name == 'Trader':
+                Interactable(pos=(obj.x, obj.y), size=(obj.width, obj.height), groups=self.interactable_sprites, name=obj.name)
+            if obj.name == 'Trader':
                 Interactable(pos=(obj.x, obj.y), size=(obj.width, obj.height), groups=self.interactable_sprites, name=obj.name)
 
         # Ground
@@ -92,8 +107,12 @@ class Level:
 
     def player_add(self, item: str, amount: int = 1):
         self.player.item_inventory[item] += amount
+        self.success.play()
         if DEBUG:
             print(self.player.item_inventory)
+
+    def toggle_shop(self):
+        self.shop_active = not self.shop_active
 
     def reset(self):
         # Plants
@@ -128,19 +147,30 @@ class Level:
                     self.soil_layer.grid[row][col].remove('P')
 
     def run(self, dt) -> None:
+        # Drawing
         self.display_surface.fill('black')
-        self.all_sprites.update(dt)
-        self.plant_collision()
         self.all_sprites.custom_draw(self.player)
+        # self.all_sprites.update(dt)
+
+        # Update
+        if self.shop_active:
+            self.menu.update()
+        else:
+            self.plant_collision()
+            self.all_sprites.update(dt)
+        
+        # Overlay
         self.overlay.display()
 
-        if self.raining:
+        # Weather
+        if self.raining and not self.shop_active:
             self.rain.update()
 
+        # Transition
         self.sky.display(dt)
-
         if self.player.sleep:
             self.transition.play()
+        
 
 
 class CameraGroup(pygame.sprite.Group):

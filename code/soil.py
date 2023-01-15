@@ -76,6 +76,11 @@ class SoilLayer:
         self.grid = self.create_soil_grid()
         self.hit_rects = self.create_hit_rects()
 
+        self.hoe_sound = pygame.mixer.Sound('../audio/hoe.wav')
+        self.hoe_sound.set_volume(0.01)
+        self.plant_sound = pygame.mixer.Sound('../audio/plant.wav')
+        self.plant_sound.set_volume(0.01)
+
         if DEBUG:
             for row in self.grid:
                 print(row)
@@ -105,13 +110,13 @@ class SoilLayer:
     def get_hit(self, target_pos: pygame.math.Vector2) -> None:
         for rect in self.hit_rects:
             if rect.collidepoint(target_pos):
+                self.hoe_sound.play()
                 x = rect.x // TILE_SIZE
                 y = rect.y // TILE_SIZE
                 if 'F' in self.grid[y][x]:
                     self.grid[y][x].append('X')
                     self.create_soil_tiles()
                     if self.raining:
-                        # TODO Why water everything?
                         self.water_all()
 
     def water(self, target_pos: pygame.math.Vector2) -> None:
@@ -150,6 +155,7 @@ class SoilLayer:
     def plant_seed(self, target_pos: pygame.math.Vector2, selected_seed: str) -> None:
         for soil_sprite in self.soil_sprites.sprites():
             if soil_sprite.rect.collidepoint(target_pos):
+                self.plant_sound.play()
                 x = soil_sprite.rect.x // TILE_SIZE
                 y = soil_sprite.rect.y // TILE_SIZE
                 if 'P' not in self.grid[y][x]:

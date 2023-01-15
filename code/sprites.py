@@ -77,12 +77,13 @@ class Tree(GenericSprite):
                  groups: Union[pygame.sprite.Group, list[pygame.sprite.Group]], name: str, player_add: Callable):
         super().__init__(pos, surf, groups, LAYERS['main'])
         self.all_sprites = self.groups()[0]
+        self.axe_sound = pygame.mixer.Sound('../audio/axe.mp3')
+        self.axe_sound.set_volume(0.05)
 
         # Tree Attributes
         self.health = 5
         self.alive = True
         self.stump_surf = pygame.image.load(f'../graphics/stumps/{name.lower()}.png').convert_alpha()
-        self.invul_timer = Timer(200)
 
         # Apples
         self.apple_surf = pygame.image.load('../graphics/fruit/apple.png')
@@ -95,6 +96,8 @@ class Tree(GenericSprite):
     def damage(self):
         self.health -= 1
 
+        self.axe_sound.play()
+
         # Remove a random apple
         if len(self.apple_sprites.sprites()) > 0:
             random_apple = choice(self.apple_sprites.sprites())
@@ -105,7 +108,6 @@ class Tree(GenericSprite):
                      groups=self.all_sprites,
                      z=LAYERS['fruit'])
             self.player_add('apple')
-        self.invul_timer.activate()
 
     def check_death(self):
         if self.health <= 0:
