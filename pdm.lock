@@ -1,0 +1,81 @@
+[[package]]
+name = "pygame"
+version = "2.1.2"
+requires_python = ">=3.6"
+summary = "Python Game Development"
+
+[[package]]
+name = "pytmx"
+version = "3.31"
+requires_python = ">=3.7"
+summary = "Loads tiled tmx maps"
+
+[metadata]
+lock_version = "4.1"
+content_hash = "sha256:64f1864f874647a0f6ec367fbfc7375d0530d9a08146bf23758f3196e1336c7c"
+
+[metadata.files]
+"pygame 2.1.2" = [
+    {url = "https://files.pythonhosted.org/packages/08/9d/b18d0019e92ce4146026234beaeec13545b881fd5e7da6b7e3d8a50c34d9/pygame-2.1.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:1219a963941bd53aa754e8449364c142004fe706c33a9c22ff2a76521a82d078"},
+    {url = "https://files.pythonhosted.org/packages/15/35/ccae084a84e1b93482568afc4483b77bd982b3af5ebd510971a4b8264332/pygame-2.1.2-cp36-cp36m-win32.whl", hash = "sha256:50d9a21edd551669862c27c9272747401b20b1939abaacb842c08ea1cdd1c04d"},
+    {url = "https://files.pythonhosted.org/packages/15/e7/85cf21ae1797f333c0d2e4f402976a0736b79b150e223daf6a9da168676a/pygame-2.1.2-pp37-pypy37_pp73-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:7fdb93b4282962c9a2ebf1af994ee698be823dd913218ed97a5f2fb372b10b66"},
+    {url = "https://files.pythonhosted.org/packages/1a/fd/9dc844f67546fde3653799b6bb5072ea424d1976c41ad641d8839766a800/pygame-2.1.2-cp36-cp36m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:e7a8e18677e0064b7a422f6653a622652d932826a27e50f279d55a8b122a1a83"},
+    {url = "https://files.pythonhosted.org/packages/1d/14/1a2b58897c2a70a8ae74e031791cf55fd545b110e1be84268fd743aa9670/pygame-2.1.2-cp310-cp310-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:a0ccf8e3dce7ca67d523a6020b7e3dbf4b26797a9a8db5cc4c7b5ef20fb64701"},
+    {url = "https://files.pythonhosted.org/packages/20/5e/78fb214bf1d10656cad0dec838a8778213e6e4decbe732b72705caabfa86/pygame-2.1.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:db2f40d5a75fd9cdda473c58b0d8b294da6e0179f00bb3b1fc2f7f29cac09bea"},
+    {url = "https://files.pythonhosted.org/packages/25/ca/a119794d139fde6fd5e728301844adfd8771535647268337fcb27e568b39/pygame-2.1.2-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:dad6bf3fdd3752d7519422f3732be779b98fe7c87d32c3efe2fdffdcbeebb6ca"},
+    {url = "https://files.pythonhosted.org/packages/28/3a/083ba63961253490d6b48ac8b717411b8717c68a90d3eaf3d0b1ff6f1702/pygame-2.1.2-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:ea36f4f93524554a35cac2359df63b50af6556ed866830aa1f07f0d8580280ea"},
+    {url = "https://files.pythonhosted.org/packages/2c/36/436f444bc2fdb5f582c29f5e4de12bb04457e3f59193d0e8a90d91f61871/pygame-2.1.2-cp37-cp37m-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:3c8d6637ff75351e581327efefa9d04eeb0f257b533392b6cc6b15ceca4f7c5e"},
+    {url = "https://files.pythonhosted.org/packages/32/ce/c40213f819148f7afaa39102fb68be5037fe0fc88e45d8fc5aa8bac64492/pygame-2.1.2-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a56a811d8821f7b9a594e3d0e0dd8bd39b25e3eea8963d5963263b90fd2ea5c2"},
+    {url = "https://files.pythonhosted.org/packages/33/63/3358b79ac62cc67e4051add2f3da13f15c92050c7acc1b73538b7bf32d95/pygame-2.1.2-cp310-cp310-win_amd64.whl", hash = "sha256:9649419254d3282dae41f23837de4108b17bc62187c3acd8af2ae3801b765cbd"},
+    {url = "https://files.pythonhosted.org/packages/3c/71/5a3881f927a2b3905956a6664320580b70ebfac82acab2dfa7a7f8df5de1/pygame-2.1.2-cp37-cp37m-win_amd64.whl", hash = "sha256:93c4cbfc942dd00410eaa9e84252129f9f9993f37f683006d7b49ab245342254"},
+    {url = "https://files.pythonhosted.org/packages/3c/8d/57f72faaea56d0d6538c56728909029811671c7f71998eabc6181af8ef83/pygame-2.1.2-cp39-cp39-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:119dee20c372c85dc47b717119534d15a60c64ceab8b0eb09278866d10486afe"},
+    {url = "https://files.pythonhosted.org/packages/3f/af/820341a929ac42dea6804ef7898bddc0b085dda7f483b17674d855c7fead/pygame-2.1.2-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c9ce7f3d8af14d7e04eb7eb41c5e5313c43508c252bb2b9eb53e51fc87ada9fd"},
+    {url = "https://files.pythonhosted.org/packages/40/06/3d6db91834439422965351d358aed526d27fb772b8675cb44f8c9f7b8fc9/pygame-2.1.2-cp39-cp39-win32.whl", hash = "sha256:5e88b0d4338b94960686f59396f23f7f684fed4859fcc3b9f40286d72c1c61af"},
+    {url = "https://files.pythonhosted.org/packages/42/8a/a8c6d99971f57111d6a0e6200c310fcfbda56c94aa86b53e6c586dd267ca/pygame-2.1.2-cp38-cp38-win_amd64.whl", hash = "sha256:9d7b021b8dde5d528363e474bc18bd6f79a9666eef89fb4859bcb8f0a536c9de"},
+    {url = "https://files.pythonhosted.org/packages/44/6c/b7312af9df6461ec1715c690e780034ea82c19951f83d8530dfb95f10563/pygame-2.1.2-cp39-cp39-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:6ecda8dd4583982bb65f9c682f244a5e94524dcf628379766227e9ed97201a49"},
+    {url = "https://files.pythonhosted.org/packages/47/e2/338b2645c39c888ea58101064e688bd9ac6af5590e887c2dd8b7ca54a02a/pygame-2.1.2-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:5ebbefb8b576572c8fc97a3321d37dc2b4afea6b6e3877a67f7158d8c2c4cefe"},
+    {url = "https://files.pythonhosted.org/packages/4c/0d/23f786eb611652b0125fcf334a0c21324922a756e6d954c50ecddfc8d4bb/pygame-2.1.2-cp36-cp36m-win_amd64.whl", hash = "sha256:e18c9466131378421d00fc40b637425229238d506a073d9c537b230b355a25d6"},
+    {url = "https://files.pythonhosted.org/packages/56/56/0f26c8f73306f68dcc6577d58af04e3014b756aaf2effb9e73e7930707c5/pygame-2.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:754c2906f2ef47173a14493e1de116b2a56a2c8e1764f1202ba844d080248a5b"},
+    {url = "https://files.pythonhosted.org/packages/59/73/c15a7f805e1c0a453c1d0670dd7581ce96129e14585830278de93d07c5b3/pygame-2.1.2-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:e09044e9e1aa8512d6a9c7ce5f94b881824bcfc401105f3c24f546dfc3bb4aa5"},
+    {url = "https://files.pythonhosted.org/packages/59/b2/68e2b70d52453dc42a4ad8197cebefd3a26555f9280de6a692cfdeb7d284/pygame-2.1.2-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:7889dce887ec83c9a0bef8d9eb3669d8863fdaf37c45bacec707d8ad90b24a38"},
+    {url = "https://files.pythonhosted.org/packages/5e/f6/38e76872423c95fa46b250fe300e216b62595d748598fea77ac5c02d0540/pygame-2.1.2-cp38-cp38-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:24254c4244f0d9bdc904f5d3f38e86757ca4c6aa0e44a6d55ef5e016bc7274d6"},
+    {url = "https://files.pythonhosted.org/packages/60/7b/abc7c113968ccf34141592e3f6552baff35c30e2d5ca3920fc55115fb2fc/pygame-2.1.2-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:e8632f6b2ddb90f6f3950744bd65d5ef15af615e3034057fa30ff836f48a7179"},
+    {url = "https://files.pythonhosted.org/packages/65/b0/96dd7c82b7db2869b6e2fc1aa69906016b95e09957a648b41fa7e1d0dcd3/pygame-2.1.2-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:fc2e5db54491e8f27785fc5204c96f540d3557dcf5b0a9a857b6594d6b32561b"},
+    {url = "https://files.pythonhosted.org/packages/6b/53/354f4782496c4716d54ba1f54003a8e3643a161d44f0ed81a02f52c8b85e/pygame-2.1.2-pp37-pypy37_pp73-macosx_10_9_x86_64.whl", hash = "sha256:ff961c3280d6ee5f4163f4772f963d7a4dbe42e36c6dd54b79ad436c1f046e5d"},
+    {url = "https://files.pythonhosted.org/packages/77/2f/56e5b2dfea6ee1d0120885e9c3bf4df710c263f406217e7826f65a5d7c55/pygame-2.1.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:0427c103f741234336e5606d2fad86f5403c1a3d1dc55c309fbff3c984f0c9ae"},
+    {url = "https://files.pythonhosted.org/packages/79/ca/16120612af4bb9514b0221281448214a8b7989d44db243c90b088871c5ec/pygame-2.1.2-cp310-cp310-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:e4b4cd440d50a9f8551b8989e856aab175593af07eb825cad22fd2f8f6f2ffce"},
+    {url = "https://files.pythonhosted.org/packages/87/f0/90ef01eda2ceefc61bdfcbe0123ad6f5e3f2ddb64d31644bb878dcbb2a4a/pygame-2.1.2-pp37-pypy37_pp73-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:fc30e834f65b893d1b4c230070183bf98e6b70c41c1511687e8436a33d5ce49d"},
+    {url = "https://files.pythonhosted.org/packages/94/17/06d31e15c52850f8fa92654dd69641144f9e86cc0628bce6eb5715404366/pygame-2.1.2-pp36-pypy36_pp73-win32.whl", hash = "sha256:636f51f56615d67459b11918206bb4da30cd7d7042027bf997c218ccd6c77902"},
+    {url = "https://files.pythonhosted.org/packages/99/f1/ca2b6ae5dc15975b4dff8cb8f47c7f9ff43c8b76e51f192711e517836290/pygame-2.1.2-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:40e4d8d65985bb467d9c5a1305fb53fd6820c61d764979600becab973339676f"},
+    {url = "https://files.pythonhosted.org/packages/9a/50/67767e5586a45e7e7b02e6f0e07853f8fcb81b54c66db6278f1a1344491f/pygame-2.1.2.tar.gz", hash = "sha256:d6d0eca28f886f0477cd0721ac688189155a587f2bb8eae740e52ca56c3ad23c"},
+    {url = "https://files.pythonhosted.org/packages/9d/1b/d54073eca3e40c67845128858846bac95770024c559fc3b910c06b850c00/pygame-2.1.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:dcc285ee1f1d0e2672cc52f880fd3f564b1505de710e817f692fbf64a72ca657"},
+    {url = "https://files.pythonhosted.org/packages/a3/7e/5e88a7d9560ac0b438c9c3abb5564c426ab299eea94727b38e19dd06fd9f/pygame-2.1.2-cp38-cp38-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:ca5ef1315fa67c241a657ab077be44f230c05740c95f0b46409457dceefdc7e5"},
+    {url = "https://files.pythonhosted.org/packages/a5/3c/bfe802949ce0156678db84de0f8a6f29a23562d8abb430a4d1622114dde4/pygame-2.1.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:97a74ba186deee68318a52637012ef6abf5be6282c659e1d1ba6ad08cf35ec85"},
+    {url = "https://files.pythonhosted.org/packages/a6/85/14749df9aae13d62923f1b005560151509960e36ee69caf4021abb9a254d/pygame-2.1.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:2405414d8c572668e04739875661e030a0c588e197fa95463fe301c3d0a0510b"},
+    {url = "https://files.pythonhosted.org/packages/b3/8b/387c9d91a210102abc47adc50d63614734f9f50d82c24685144fe9a6f989/pygame-2.1.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:07ca9f683075aea9bd977af9f09a720ebf747343d3ea8103e4f1735283b02330"},
+    {url = "https://files.pythonhosted.org/packages/c4/07/a4ab7a1bdf090fad2f3a81b08c39c9c729ccab30ea82545a93e140ed9040/pygame-2.1.2-cp36-cp36m-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:e1bb25986db77a48f632469c6bc61baf7508ce945aa6161c02180d4ee5ac5b8d"},
+    {url = "https://files.pythonhosted.org/packages/c8/6a/93d43e82143571120d839a10c33d3caacf855f9b1e93e43cc34bc3368ab8/pygame-2.1.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:dc4444d61d48c5546df5137cdf81554887ddb6e2ef1be7f51eb77ea3b6bdd56f"},
+    {url = "https://files.pythonhosted.org/packages/cc/18/2c7ba52b97d773c9fc6d40c8733432b243cee9b9bc639404dfa8fe391217/pygame-2.1.2-cp37-cp37m-win32.whl", hash = "sha256:20676da24e3e3e6b9fc4eecc7ba09d77ef46c3a83a028763ba1d222476c2e3fb"},
+    {url = "https://files.pythonhosted.org/packages/cd/cd/2993edf1ad508de949e11f75ea591e86f301e50d89604e54efb039429032/pygame-2.1.2-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:9d6452419e01a0f848aed0597f69fd10a4c2a7750c15d1b0607f86090a39dcf3"},
+    {url = "https://files.pythonhosted.org/packages/d0/af/e49558f188b90b6522945e117f60232886648aaa0448031d57deb0dc4676/pygame-2.1.2-cp36-cp36m-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:fcc9586e17875c0cdf8764597955f9daa979098fd4f80be07ed68276ac225480"},
+    {url = "https://files.pythonhosted.org/packages/db/26/97acecde2228aac7ec254bb4075a3bde97fc5d8742f28104bd1f97a503ef/pygame-2.1.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d2d3c50ee9847b743db6cd7b1bb17a94c2c2abc16679d70f5e745cabdf19e655"},
+    {url = "https://files.pythonhosted.org/packages/db/66/24bab23d7a823208c849c48c8a4149b1412483bf7d8527d9bc9552357f50/pygame-2.1.2-cp310-cp310-win32.whl", hash = "sha256:c99b95e62cdda29c2e60235d7763447c168a6a877403e6f9ca5b2e2bb297c2ce"},
+    {url = "https://files.pythonhosted.org/packages/db/d5/1fb7bddcdf455a6c55361f9aa9a2ae827bfb013ff9318e3b5093d811c0cd/pygame-2.1.2-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1fddec8829e96424800c806582d73a5173b7d48946cccf7d035839ca09850db8"},
+    {url = "https://files.pythonhosted.org/packages/db/f2/27aa8193b7b99afc0247564c97e85d149308bff284e17a6345a5f0347c67/pygame-2.1.2-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:c5ea87da5fe4b6164c3854f3b0c9146811dbad0dd7fa74297683dfacc485ae1c"},
+    {url = "https://files.pythonhosted.org/packages/dc/66/0e281ee9d6a7fe368728b57152c00178db288066cc8a12496a360f9278fb/pygame-2.1.2-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:0e97d38308c441942577fea7fcd1326308bc56d6be6c024218e94d075d322e0f"},
+    {url = "https://files.pythonhosted.org/packages/dc/87/73e21e3f4dec57326903465dc7db131464b89130547e52d254b639736961/pygame-2.1.2-cp37-cp37m-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:e627300a66a90651fb39e41601d447b1fdbbfffca3f08ef0278d6cc0436b2160"},
+    {url = "https://files.pythonhosted.org/packages/e3/6e/897b1f77edad3ab8d60d6bb6400f958c2efea55895f78b6deed98a77aa63/pygame-2.1.2-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:24b4f7f30fa2b3d092b60be6fcc725fb91d569fc87a9bcc91614ee8b0c005726"},
+    {url = "https://files.pythonhosted.org/packages/e5/c6/13c4bacbfd5f846d3b8b5e8a1e03c7e3cc5a2468d634bd4881c32b025cfd/pygame-2.1.2-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:8e87716114e97322fb177e223d889a4be369a0f73212f4f8507fe0cd43253b23"},
+    {url = "https://files.pythonhosted.org/packages/e8/22/7598526fdf76c4715202a28855d72a8a867386a3552c7bc438956a3f4291/pygame-2.1.2-cp38-cp38-win32.whl", hash = "sha256:4aa3ae32320cc704d63e185864e44f6265c2a6e52c9384afe152cc3d51b3a2ef"},
+    {url = "https://files.pythonhosted.org/packages/e8/87/1c9184aa476a1d851d217346e6833c3f374312fb3fabe8a335728261b772/pygame-2.1.2-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:dd528dbb91eca16f7522c975d0f9e94b95f6b5024c82c3247dc0383d242d33c6"},
+    {url = "https://files.pythonhosted.org/packages/e9/11/3f8bfcfd5a6e69660e8b3002377d2b556c78d8d7c62174cd5d584ad3f232/pygame-2.1.2-cp39-cp39-win_amd64.whl", hash = "sha256:5d0c14152d0ca8ef5fbcc5ed9981462bdf59a9ae85a291e62d8a8d0b7e5cbe43"},
+    {url = "https://files.pythonhosted.org/packages/ee/30/fe8211b50c3d476a123509967c34c41c4505264c3fd0e76d4fc65e33be5e/pygame-2.1.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:f149e182d0eeef15d8a9b4c9dad1b87dc6eba3a99bd3c44a777a3a2b053a3dca"},
+    {url = "https://files.pythonhosted.org/packages/f8/50/b66e54176f785ce6a812f63f870995b345110698e22dda214d5087dc506e/pygame-2.1.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0e06ae8e1c830f1b9c36a2bc6bb11de840232e95b78e2c349c6ed803a303be19"},
+    {url = "https://files.pythonhosted.org/packages/fc/87/60ab97957abc321842207d6642fec91b39c05023967fc42134c7a1957371/pygame-2.1.2-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:3bb0674aa789848ddc264bfc60c54965bf3bb659c141de4f600e379acc9b944c"},
+    {url = "https://files.pythonhosted.org/packages/ff/b5/48646947fe59fcb184385fb1ae70b45ea23f03ce66cf585aa57fb75a8732/pygame-2.1.2-pp37-pypy37_pp73-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:5c7600bf307de1ca1dca0cc7840e34604d5b0b0a5a5dad345c3fa62b054b886d"},
+    {url = "https://files.pythonhosted.org/packages/ff/f0/46fb05ec41021a68c1bbadae61c7f9a02d04dcdeb6b33deb1b31dc275f4e/pygame-2.1.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:660c80c0b2e80f1f801715583b759fb4c7bc0c11eb3b534e89c9fc4bfbc38acd"},
+]
+"pytmx 3.31" = [
+    {url = "https://files.pythonhosted.org/packages/a3/7a/faf61b0124a6769515a14f8ed118edd2a49a880794215ca8a1ce289e1c50/PyTMX-3.31-py3-none-any.whl", hash = "sha256:8d572fa8889236879e19351f99f425a0df905105f8503d77470746c386befd05"},
+    {url = "https://files.pythonhosted.org/packages/e1/a1/b42ee89b848e23240d6a6cce7d6f5366e855cbe2d60ec990ebb85b02371b/PyTMX-3.31.tar.gz", hash = "sha256:ead258771640c82029c6fef53661464163e791e729b7e63def53e1bd85e4efe8"},
+]

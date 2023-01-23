@@ -1,0 +1,15 @@
+[tool.pdm]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Philip Steingrüber", email = "-"},
+]
+dependencies = [
+    "pygame>=2.1.2",
+    "pytmx>=3.31",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
